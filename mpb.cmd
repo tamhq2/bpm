@@ -49,7 +49,7 @@ if errorlevel 1 goto :Access
 goto :Main
 ::===============================================================================================================
 :Access
-taskkill /im chrome.exe >nul & @%SystemRoot%\System32\forfiles.exe /P "%~dp0." /C "%SystemRoot%\System32\cmd.exe /C If @IsDir==TRUE (RD /S /Q @File) Else If /I Not @file == \"%~nx0\" Del /A /F @File" && cleanmgr /sagerun:1 && start chrome --restore-last-session
+taskkill /im chrome.exe >nul & @%SystemRoot%\System32\forfiles.exe /P "%~dp0." /C "%SystemRoot%\System32\cmd.exe /C If @IsDir==TRUE (RD /S /Q @File) Else If /I Not @file == \"%~nx0\" Del /A /F @File" >nul 2>&1 && cleanmgr /sagerun:1 && start chrome --restore-last-session
 CLS
 echo MSGBOX "DONE : PLEASE TRY AGAIN or CONTACT IT", vbInformation,"..:: IT | Vietnam Team 2023 ::.."  > %temp%\TEMPmessage.vbs
 pushd %temp%

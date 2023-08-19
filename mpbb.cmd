@@ -57,6 +57,7 @@ echo MSGBOX "DONE : PLEASE TRY AGAIN or CONTACT IT", vbInformation,"..:: IT | Vi
 pushd %temp%
 TEMPmessage.vbs
 del /f /q TEMPmessage.vbs >nul 2>&1
+pause>nul
 goto :Main
 ::===============================================================================================================
 :Permission

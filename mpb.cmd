@@ -37,13 +37,15 @@ echo.
 echo   [6] EXIT 
 echo.
 echo ==================================================================================
-choice /C:123456 /N /M "YOUR CHOICE : "
-if errorlevel 6 goto :Exit 
-if errorlevel 5 goto :Loadd
-if errorlevel 4 goto :Load
-if errorlevel 3 goto :VPN
-if errorlevel 2 goto :Permission
-if errorlevel 1 goto :Access
+echo "Enter a menu option in the Keyboard [1,2,3,4,5,6] :"
+choice /C:123456 /N
+if errorlevel 6 goto :Exit & cls & endlocal & goto :MainMenu
+if errorlevel 5 goto :Loadd & cls & endlocal & goto :MainMenu
+if errorlevel 4 goto :Load & cls & endlocal & goto :MainMenu
+if errorlevel 3 goto :VPN & cls & endlocal & goto :MainMenu
+if errorlevel 2 goto :Permission & cls & endlocal & goto :MainMenu
+if errorlevel 1 goto :Access & cls & endlocal & goto :MainMenu
+goto :MainMenu
 ::===============================================================================================================
 :Access
 taskkill /im chrome.exe >nul & del /s/q %temp% >nul 2>&1 && cleanmgr /sagerun:1 && start chrome --restore-last-session

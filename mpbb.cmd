@@ -3,15 +3,13 @@
 @echo off
 ::===============================================================================================================
 :Main
-@echo off
 cls
-setlocal enabledelayedexpansion
-setlocal EnableExtensions
 mode con cols=85 lines=41
-color f4
+color 07
+title Solve BPM for client computers only, without server by IT VIETNAM 2023®
 echo ==================================================================================
 cd /d %~dp0 >nul 2>&1
-title Solve BPM for client computers only, without server by IT VIETNAM 2023®
+
 echo.
 echo          SOLVE BPM FOR CLIENT COMPUTER ONLY, WITHOUT SERVER...
 echo.
@@ -42,12 +40,14 @@ echo.
 echo ==================================================================================
 echo "Enter a menu option in the Keyboard [1,2,3,4,5,6] :"
 choice /C:123456 /N
-if errorlevel 6 goto :Exit & cls & endlocal & goto :Main
-if errorlevel 5 goto :Loadd & cls & endlocal & goto :Main
-if errorlevel 4 goto :Load & cls & endlocal & goto :Main
-if errorlevel 3 goto :VPN & cls & endlocal & goto :Main
-if errorlevel 2 goto :Permission & cls & endlocal & goto :Main
-if errorlevel 1 goto :Access & cls & endlocal & goto :Main
+set _erl=%errorlevel%
+
+if %_erl%==6 goto :Exit 
+if %_erl%==5 setlocal & call :Loadd 
+if %_erl%==4 setlocal & call :Load 
+if %_erl%==3 setlocal & call :VPN 
+if %_erl%==2 setlocal & call :Permission 
+if %_erl%==1 setlocal & call :Access
 goto :Main
 ::===============================================================================================================
 :Access
@@ -57,7 +57,7 @@ echo MSGBOX "DONE : PLEASE TRY AGAIN or CONTACT IT", vbInformation,"..:: IT | Vi
 pushd %temp%
 TEMPmessage.vbs
 del /f /q TEMPmessage.vbs >nul 2>&1
-GOTO Main
+goto :Main
 ::===============================================================================================================
 :Permission
 start ms-settings:privacy-microphone
@@ -72,7 +72,7 @@ echo MSGBOX "DONE : PLEASE TRY AGAIN or CONTACT IT,,,Ctrl..", vbInformation,"..:
 pushd %temp%
 TEMPmessage.vbs
 del /f /q TEMPmessage.vbs >nul 2>&1
-GOTO Main
+GOTO :Main
  
 ::===============================================================================================================
 :VPN
@@ -81,7 +81,7 @@ echo MSGBOX "CONTACT IT", vbInformation,"..:: IT | Vietnam Team 2023 ::.."  > %t
 pushd %temp%
 TEMPmessage.vbs
 del /f /q TEMPmessage.vbs >nul 2>&1
-GOTO Main
+GOTO :Main
 ::===============================================================================================================
 :Load
 CLS
@@ -89,7 +89,7 @@ echo MSGBOX "CONTACT IT", vbInformation,"..:: IT | Vietnam Team 2023 ::.."  > %t
 pushd %temp%
 TEMPmessage.vbs
 del /f /q TEMPmessage.vbs >nul 2>&1
-GOTO Main
+GOTO :Main
 ::===============================================================================================================
 :Loadd
 CLS
@@ -97,7 +97,7 @@ echo MSGBOX "CONTACT IT", vbInformation,"..:: IT | Vietnam Team 2023 ::.."  > %t
 pushd %temp%
 TEMPmessage.vbs
 del /f /q TEMPmessage.vbs >nul 2>&1
-GOTO Main
+GOTO :Main
 ::===============================================================================================================
 :Exit
 cls

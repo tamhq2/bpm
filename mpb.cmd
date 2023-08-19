@@ -5,8 +5,6 @@
 :Main
 @echo off
 cls
-setlocal enabledelayedexpansion
-setlocal EnableExtensions
 mode con cols=85 lines=41
 color f4
 echo ==================================================================================

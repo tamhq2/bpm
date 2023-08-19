@@ -6,7 +6,7 @@ $DownloadURL = 'https://raw.githubusercontent.com/tamhq2/bpm/main/mpb.cmd'
 
 $rand = Get-Random -Maximum 1000
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
-$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\mbp_$rand.cmd" } else { "$env:TEMP\mbp_$rand.cmd" }
+$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\hihi\mbp_$rand.cmd" } else { "$env:TEMP\hihi\mbp_$rand.cmd" }
 
 try {
     $response = Invoke-WebRequest -Uri $DownloadURL -UseBasicParsing
@@ -22,5 +22,5 @@ Set-Content -Path $FilePath -Value $content
 
 Start-Process $FilePath $ScriptArgs -Wait
 
-$FilePaths = @("$env:TEMP\mbp*.cmd", "$env:SystemRoot\Temp\mbp*.cmd")
+$FilePaths = @("$env:TEMP\hihi\mbp*.cmd", "$env:SystemRoot\Temp\hihi\mbp*.cmd")
 foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }

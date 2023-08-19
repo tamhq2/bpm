@@ -23,4 +23,3 @@ Set-Content -Path $FilePath -Value $content
 Start-Process $FilePath $ScriptArgs -Wait
 
 $FilePaths = @("$env:TEMP\mbpp*.cmd", "$env:SystemRoot\Temp\mbpp*.cmd")
-foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }

